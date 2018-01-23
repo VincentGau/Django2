@@ -114,9 +114,3 @@ ENV/
 
 # mypy
 .mypy_cache/
-.gitignore
-.idea/
-django2/__pycache__/
-hpc/__pycache__/
-hpc/migrations/__pycache__/
-templates/
