@@ -4,6 +4,7 @@ from django.urls import path
 
 from . import views
 
+app_name = 'hpc'
 urlpatterns = [
     path('', views.index, name='index'),
 ]
