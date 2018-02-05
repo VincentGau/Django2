@@ -25,7 +25,8 @@ SECRET_KEY = 'e@9e9no1owv9)#x3)&__)#!wl&35nkx2efd!mwzdm3$51v@sci'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# TODO test branch
+ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hpc.apps.HpcConfig',
+    'hpc',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +76,18 @@ WSGI_APPLICATION = 'django2.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE'  : 'django.db.backends.postgresql',
+        'NAME'    : 'kohaku.cc',
+        'USER'    : 'kohakucc',
+        'PASSWORD': 'kohakucc',
+        'HOST'    : '127.0.0.1',
+        'PORT'    : '5432',
     }
 }
 
