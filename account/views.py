@@ -9,10 +9,6 @@ def index(request):
     return HttpResponse("account main page.")
 
 
-# def login_form(request):
-#     return render(request, 'account/login_form.html')
-
-
 def login(request):
 
     if request.method == 'GET':
@@ -30,4 +26,4 @@ def login(request):
             return redirect('/')
         else:
             # Show an error page
-            return redirect('hpc:index')
+            return redirect('/')

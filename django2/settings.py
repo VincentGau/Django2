@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e@9e9no1owv9)#x3)&__)#!wl&35nkx2efd!mwzdm3$51v@sci'
+SECRET_KEY = local_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'account',
 ]
 
-
 # Custom user model
 AUTH_USER_MODEL = 'hpc.User'
 
@@ -59,10 +58,10 @@ ROOT_URLCONF = 'django2.urls'
 
 TEMPLATES = [
     {
-        'BACKEND' : 'django.template.backends.django.DjangoTemplates',
-        'DIRS'    : [],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
         'APP_DIRS': True,
-        'OPTIONS' : {
+        'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -80,12 +79,12 @@ WSGI_APPLICATION = 'django2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.postgresql',
-        'NAME'    : local_settings.DB_NAME,
-        'USER'    : local_settings.DB_USER,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': local_settings.DB_NAME,
+        'USER': local_settings.DB_USER,
         'PASSWORD': local_settings.DB_PASSWORD,
-        'HOST'    : local_settings.DB_HOST,
-        'PORT'    : local_settings.DB_PORT,
+        'HOST': local_settings.DB_HOST,
+        'PORT': local_settings.DB_PORT,
     }
 }
 
