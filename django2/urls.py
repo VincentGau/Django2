@@ -20,6 +20,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hpc/', include('hpc.urls')),
+    path('account/', include('account.urls')),
 
 
     # last path pattern
