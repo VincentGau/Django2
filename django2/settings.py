@@ -25,7 +25,7 @@ SECRET_KEY = 'e@9e9no1owv9)#x3)&__)#!wl&35nkx2efd!mwzdm3$51v@sci'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# TODO test branch
+# TODO
 ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
 
 
