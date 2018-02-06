@@ -5,7 +5,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    user_name = 'Noone'
-    if request.user.is_authenticated:
-        user_name = request.user
-    return HttpResponse("Welcome, %s" % user_name)
+    return render(request, 'hpc/index.html')

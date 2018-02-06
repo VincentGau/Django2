@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'hpc/css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<div id="hpc-header">
+{% if request.user.is_authenticated %}
+
+    {{ request.user }} | <a href="accounts/logout/?next=/">Logout</a>
+{% else %}
+    <a href="accounts/login/?next=/">login</a>
+{% endif %}
+</div>
+
+{% block content %}{% endblock %}
+
+</body>
+
+<script type="text/javascript" src="{% static 'hpc/js/jquery-3.1.1.min.js' %}"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'hpc/js/script.js' %}"></script>
+</html>
