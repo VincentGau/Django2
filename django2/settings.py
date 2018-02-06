@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hpc.apps.HpcConfig',
-    'account',
 ]
 
 # Custom user model
