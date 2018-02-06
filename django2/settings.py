@@ -28,6 +28,9 @@ DEBUG = True
 # TODO
 ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
 
+# session expire time, seconds
+SESSION_COOKIE_AGE = 60
+
 # Application definition
 
 INSTALLED_APPS = [
