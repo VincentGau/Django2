@@ -1,13 +1,12 @@
 {% if form.errors %}
     <p>
-      Your username and password didn't match.
-      Please try again.
+        Something is wrong.
     </p>
-  {% else %}
-    <p>Please, use the following form to log-in:</p>
-  {% endif %}
+{% else %}
+    <p>Login</p>
+{% endif %}
 <form action="{% url 'account:login' %}" method="POST">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Login">
 </form>
