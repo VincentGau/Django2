@@ -25,8 +25,9 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# TODO
+# TODO set allowed hosts
 ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
+
 
 # session expire time, seconds
 SESSION_COOKIE_AGE = 60
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hpc.apps.HpcConfig',
+    'account',
 ]
 
 # Custom user model

@@ -14,9 +14,9 @@
 
 <div id="hpc-header">
 {% if request.user.is_authenticated %}
-    {{ request.user }} | <a href="accounts/logout/?next=/">Logout</a>
+    {{ request.user }} | <a href="{% url 'account:logout' %}">Logout</a>
 {% else %}
-    <a href="accounts/login/?next=/">login</a>
+    <a href="{% url 'account:login' %}">login</a>
 {% endif %}
 </div>
 

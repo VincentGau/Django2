@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from django.contrib.auth import views as auth_views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
 
+    # built-in authentication views
+    # path('accounts/', include('django.contrib.auth.urls')),
 
+    # custom account app
+    path('account/', include('account.urls')),
 
     # default path pattern
     path('', include('hpc.urls')),
