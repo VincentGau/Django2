@@ -8,7 +8,7 @@ class HomePageViewTest(TestCase):
     def test_home_page(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'index')
+        self.assertContains(response, 'Index')
 
 
 class HpcViewsTest(TestCase):
