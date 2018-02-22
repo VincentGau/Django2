@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # production web server will handler the static files when DEBUG is set to false, places to serve these files.
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+LOG_ROOT = os.path.join(BASE_DIR, "log/")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -81,6 +82,46 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django2.wsgi.application'
+
+# Log
+Logging = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
+    'handlers': {
+        'file': {
+            'level'    : 'DEBUG',
+            'class'    : 'logging.FileHandler',
+            'formatter': 'standard',
+            'filename' : os.path.join(LOG_ROOT, 'mylog.log'),
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['require_debug_false'],
+            'include_html': True
+        },
+    },
+    'loggers': {
+        'mylogger': {
+            'handlers' : ['file'],
+            'level'    : 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
