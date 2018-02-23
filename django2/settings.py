@@ -28,7 +28,7 @@ LOG_ROOT = os.path.join(BASE_DIR, "log/")
 SECRET_KEY = local_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # TODO set allowed hosts
 ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'hpc.User'
 
 MIDDLEWARE = [
+    'django.middleware.common.BrokenLinkEmailsMiddleware',  # for 404 error report
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'django2.urls'
@@ -83,15 +85,36 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django2.wsgi.application'
 
+
+# staff info, email receivers
+ADMINS = (
+    ('haku', 'g@kohaku.cc'),
+)
+
+MANAGERS = ADMINS
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = local_settings.EMAIL_HOST
+EMAIL_PORT = local_settings.EMAIL_PORT
+EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
+EMAIL_SUBJECT_PREFIX = '[Django-site]'  # 邮件主题前缀，默认为[Django]
+DEFAULT_FROM_EMAIL = local_settings.DEFAULT_FROM_EMAIL
+SERVER_EMAIL = local_settings.DEFAULT_FROM_EMAIL
+
+
+
 # Log
-Logging = {
-    'version': 1,
+LOGGING = {
+    'version'                 : 1,
     'disable_existing_loggers': False,
-    'formatters': {
+    'formatters'              : {
         'standard': {
             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
-        'simple': {
+        'simple'  : {
             'format': '%(levelname)s %(message)s'
         },
     },
@@ -100,7 +123,7 @@ Logging = {
             '()': 'django.utils.log.RequireDebugFalse',
         }
     },
-    'handlers': {
+    'handlers'                : {
         'file': {
             'level'    : 'DEBUG',
             'class'    : 'logging.FileHandler',
@@ -111,14 +134,28 @@ Logging = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
             'filters': ['require_debug_false'],
-            'include_html': True
+            'include_html': True,
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
         },
     },
-    'loggers': {
+    'loggers'                 : {
         'mylogger': {
-            'handlers' : ['file'],
+            'handlers' : ['file', 'console', 'mail_admins'],
             'level'    : 'DEBUG',
             'propagate': True,
+        },
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     },
 }
