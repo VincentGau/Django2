@@ -100,7 +100,7 @@ EMAIL_HOST = local_settings.EMAIL_HOST
 EMAIL_PORT = local_settings.EMAIL_PORT
 EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
-EMAIL_SUBJECT_PREFIX = '[Django-site]'  # 邮件主题前缀，默认为[Django]
+EMAIL_SUBJECT_PREFIX = '[Django-site] '  # 邮件主题前缀，默认为[Django]
 DEFAULT_FROM_EMAIL = local_settings.DEFAULT_FROM_EMAIL
 SERVER_EMAIL = local_settings.DEFAULT_FROM_EMAIL
 
