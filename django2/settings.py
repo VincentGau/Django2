@@ -31,7 +31,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 DEBUG = False
 
 # TODO set allowed hosts
-ALLOWED_HOSTS = ['new.kohaku.cc', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['kohaku.cc', 'localhost', '127.0.0.1']
 
 
 # session expire time, seconds
